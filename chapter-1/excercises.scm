@@ -43,4 +43,35 @@
    (+ a 1))
 
 ;Excercise 1.2
+; Should return -0.246666 or -37/150
+(/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5))))) (* 3 (- 6 2) (- 2 7)))
 
+;Excercise 1.3
+;For this excercise I assume there is at this point no function that calculates the square of a number
+;also I will use the verbose way to create procedures with no syntactic sugar
+(define sqr (lambda (x) (* x x)))
+(define sumoflargest2 (lambda (a b c) 
+			(cond ((and (> a b) (> a c)) 
+			       (if (> b c) 
+				 (+ (sqr a) (sqr b))
+				 (+ (sqr a) (sqr c))))
+			      ((and (> b a) (> b c)) 
+			       (if (> a c)
+				 (+ (sqr b) (sqr a))
+				 (+ (sqr b) (sqr c))))
+			      ((and (> c a) (> c b))
+			       (if (> a b)
+				 (+ (sqr c) (sqr a))
+				 (+ (sqr c) (sqr b))))
+			      ((= a b)
+			       (if  (> a c)
+				 (+ (sqr b) (sqr a))
+				 (+ (sqr c) (sqr a))))
+			      ((= a c)
+			       (if (> c b)
+				 (+ (sqr c) (sqr a))
+				 (+ (sqr c) (sqr b))))
+			      ((= b c)
+			       (if (> b a)
+				 (+ (sqr b) (sqr c))
+				 (+ (sqr b) (sqr a)))))))
