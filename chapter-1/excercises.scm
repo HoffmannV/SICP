@@ -75,3 +75,32 @@
 			       (if (> b a)
 				 (+ (sqr b) (sqr c))
 				 (+ (sqr b) (sqr a)))))))
+
+;Excercise 1.4
+;Procedure:
+;(define (a-plus-abs-b a b)
+;  ((if (> b 0) + -) a b))
+;This function uses (if (> b 0) + -) a b) as the compound expression
+;if b is greater than 0 the + operator will be used else the - operator will be used.
+
+;Excercise 1.5
+(define (p) (p))
+(define (test x y)
+  (if (= x 0) 0 y))
+
+;test(0 (p))
+;Using the applicative order evaluation this test will return a infine loop as all of the arguments would be evaluated
+;before the procedure and (p) in this case would call upon itself so the condition (= x 0) could not be checked.
+;Normal order evaluation would return 0 as the evaluaton of the arguments is beeing held back util they are explicitly needed
+
+;Exercicse 1.6
+;If Alyssa tries to use this new-if procedure to calculate the sqaure root it wil result in a infinite loop.
+;The problem lies in the applicative order evaluation of cond (it evaluates bouth conditions before deciding witch one to choose) 
+;Because a recursive call is used the procedure would run without beeing able to exit.
+
+;Excercise 1.7
+;For very small numbers the precision 0.001 would have to be changed. If the value is lower than 0.001 the procedure will only run
+;a few times because the threshold between 0.1 and 0.1 is less than 0.001 so its good-enough.
+;With big numbers there will be some small deviations. 
+;I will be implementing the changes in the math.scm file
+
